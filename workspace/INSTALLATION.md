@@ -1,6 +1,6 @@
 # INSTALLATION
 
-In the litex repo, type:
+In the litex repo (on Docker), type:
 
 ```
 $ mkdir install; cd install 
