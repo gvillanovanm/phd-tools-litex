@@ -35,7 +35,7 @@ sudo ./litex_setup.py --gcc=riscv
 # Test on bord arty
 cd ..
 
-export LITEX_ENV_VIVADO=/Xilinx/Vivado/2024.2
+export LITEX_ENV_VIVADO=/opt/Xilinx/Vivado/2024.2
 
 # https://docs.nordicsemi.com/bundle/ncs-2.2.0/page/zephyr/boards/riscv/litex_vexriscv/doc/index.html
 ./litex-boards/litex_boards/targets/digilent_arty.py --build --timer-uptime --csr-json csr.json
