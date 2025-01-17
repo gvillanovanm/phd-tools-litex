@@ -7,7 +7,7 @@
 
 CPU_TYPE     =vexriscv # Options: vexriscv, picorv32, etc.
 CPU_VARIANT  =lite     # Options: standard, lite, full, etc.
-CPU_INT_RAM  =0x20000
+CPU_INT_RAM  =0x10000
 
 soc_sim:
 	litex_sim \
@@ -39,6 +39,16 @@ fpga_build:
 	--integrated-main-ram-size=$(CPU_INT_RAM) \
 	--cpu-type=$(CPU_TYPE) \
 	--output-dir=fpga --build
+
+fpga_load:
+	$(PYTHON_TARGET) \
+	--integrated-main-ram-size=$(CPU_INT_RAM) \
+	--cpu-type=$(CPU_TYPE) \
+	--output-dir=fpga --load
+
+# load SW from serial and execute it
+fpga_load_sw:
+	litex_term /dev/ttyUSB1 --speed 115200 --kernel sw/main.bin
 
 fpga_clean:
 	rm -rf fpga

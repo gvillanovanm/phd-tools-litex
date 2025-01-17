@@ -1,6 +1,10 @@
+# Docker
+#BUILD_DIR?=../build/sim
+#SOC_DIRECTORY=/workspace/litex/soc
 
-BUILD_DIR?=../build/sim
-SOC_DIRECTORY=/workspace/litex/soc
+# FPGA
+BUILD_DIR?=../fpga
+SOC_DIRECTORY=/home/gvillanovanm/phd/tools/phd-tools-litex/litex/soc
 
 include $(BUILD_DIR)/software/include/generated/variables.mak
 include $(SOC_DIRECTORY)/software/common.mak
