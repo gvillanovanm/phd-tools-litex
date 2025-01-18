@@ -16,6 +16,7 @@ soc_sim:
 	--no-compile-gateware
 
 soc_sim_sw:
+	@echo "Move this folder and adapt the Makefile generated manually!"
 	litex_bare_metal_demo --build-path=sw/sim/
 
 soc_sim_sw_comp:
