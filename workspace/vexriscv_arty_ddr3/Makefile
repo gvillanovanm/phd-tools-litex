@@ -1,6 +1,5 @@
 # CPU Configs
 CPU_TYPE     =vexriscv # Options: vexriscv, picorv32, etc.
-CPU_INT_RAM  =0x10000
 
 # Sim Configs
 SIM_OUT_DIR  =sim
@@ -23,14 +22,13 @@ FPGA_OUT_DIR =fpga
 # - Integrated-main-ram-size is very import to avoid DRAM, the DPU will be like this.
 sim_build:
 	litex_sim                                 \
-	--integrated-main-ram-size=$(CPU_INT_RAM) \
 	--cpu-type=$(CPU_TYPE)                    \
 	--output-dir=$(SIM_OUT_DIR)               \
 	--no-compile-gateware
 
+# - Attention: In this example, the linker generated for simulation is not mapping DDR3 mem map
 sim_run:
 	litex_sim                                 \
-	--integrated-main-ram-size=$(CPU_INT_RAM) \
 	--cpu-type=$(CPU_TYPE)                    \
 	--output-dir=$(SIM_OUT_DIR)               \
 	--ram-init=$(BAREMETAL_PATH)/demo.bin
@@ -53,13 +51,11 @@ baremetal_build:
 # ----------------------------------------------------------------------
 fpga_build:
 	python3 -m litex_boards.targets.$(FPGA_TARGET) \
-	--integrated-main-ram-size=$(CPU_INT_RAM)      \
 	--cpu-type=$(CPU_TYPE)                         \
 	--output-dir=$(FPGA_OUT_DIR) --build
 
 fpga_load:
 	python3 -m litex_boards.targets.$(FPGA_TARGET) \
-	--integrated-main-ram-size=$(CPU_INT_RAM)      \
 	--cpu-type=$(CPU_TYPE)                         \
 	--output-dir=$(FPGA_OUT_DIR) --load
 

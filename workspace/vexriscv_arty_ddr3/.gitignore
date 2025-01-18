@@ -1,0 +1,9 @@
+*.d
+*.o
+*.bin
+*.map
+*.elf
+*.py
+fpga
+prog
+sim
