@@ -76,3 +76,6 @@ fpga_load_fw:
 
 fpga_clean:
 	rm -rf fpga
+
+clean_all:
+	rm -rf firmware fpga prog sim
